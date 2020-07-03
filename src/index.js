@@ -2,54 +2,41 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Data from './Data';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      search : " "
-    };
-  }
 
 
-updatedSearch(event) {
-  this.setState(
-    {search : event.target.value.substr(0,15)}
-    )
-}
-
-  render () {
-    console.log(this.props.names)
-    let filterednames = this.props.names.filter(
-      (name) => {
-        return name.toLowerCase().indexOf(this.state.
-          search.toLowerCase()) !== -1;
+   class App extends Component {
+   constructor() {
+    super() 
+      this.state = {
+        names : [],
       }
-    );
-    return (  
-        <div className = "App">
-        <h1> Users list </h1>
-        <Data />
-        <input  type = "text" 
-          placeholder = "Search by user name" 
-          value = {this.state.search}
-          onChange = {this.updatedSearch.bind(this)}
-        />
-        <ol>
-            {filterednames.map(name => (
-            <li key={name}>{name}</li>
-            ))}
-        </ol>
-        </div>
-    )
-    
+   }
+
+  
+    componentDidMount() {
+        fetch('https://jsonplaceholder.typicode.com/users')
+          //Response
+        .then(response => response.json())
+        .then(output => {
+        let data = output;
+        let listaimion = [];
+        for (let index = 0; index < data.length; index++) {
+          listaimion.push(data[index].name)
+        }      
+        this.setState({names : listaimion});
+      });
+    }
+
+     
+     render () {
+       return (
+         <div className = "Data">
+          <Data  names = {this.state.names} /> 
+         </div>       
+       )
+     }
     }
 
 
-
-}
-
 ReactDOM.render(<App/>,document.getElementById('root'));
-
-
-
 export default App;

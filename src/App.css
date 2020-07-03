@@ -1,0 +1,30 @@
+.header {
+  font-family : Arial;
+  font-weight: lighter;
+  right: 30px;
+  font-size: 30px;
+  position: relative;
+  left: 1.2%;
+}
+
+.input-container {
+  display: inline-block
+}
+input[type=text]{
+  border: 1px solid black;
+  border-top: 1px solid grey;
+}
+
+ol {
+    list-style: none;
+    counter-reset: my-awesome-counter;
+    padding : 0;
+  }
+  ol li {
+    counter-increment: my-awesome-counter;
+  }
+  ol li::before {
+    content: counter(my-awesome-counter) ". ";
+    color: grey;
+    font-weight: bold;
+  }
