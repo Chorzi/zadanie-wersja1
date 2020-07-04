@@ -4,7 +4,7 @@
   right: 30px;
   font-size: 30px;
   position: relative;
-  left: 1.2%;
+  left: 7.5%;
 }
 
 .input-container {
@@ -13,6 +13,7 @@
 input[type=text]{
   border: 1px solid black;
   border-top: 1px solid grey;
+  width: 350px;
 }
 
 ol {
@@ -27,4 +28,25 @@ ol {
     content: counter(my-awesome-counter) ". ";
     color: grey;
     font-weight: bold;
+  }
+
+  .username {
+    color: grey;
+    font-weight: bold;
+  }
+
+  .names {
+    font-size : 20px;
+
+  }
+
+  .outer {
+    position: relative;
+    width: 100%;
+  }
+
+  .inner {
+    display: inline-block;
+    text-align: center;
+    padding: 3px;
   }
