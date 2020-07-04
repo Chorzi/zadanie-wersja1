@@ -18,24 +18,27 @@ updatedSearch(event) {
 
   render () {
 
-    console.log(this.props.names)
-    let filterednames = this.props.names.filter(
-      (name) => {
-        return name.toLowerCase().indexOf(this.state.
+    let filteredPersons = this.props.persons.filter(
+      (persons) => {
+        return persons.name.toString().toLowerCase().indexOf(this.state.
           search.toLowerCase()) !== -1;
       }
     );
     return (  
-        <div>
-        <p className = "header"> Users list </p>
-        <input  type = "text" 
+          <div>
+          <div className = "outer">
+            <p className = "header"> Users list </p>
+          <div className = "inner"> 
+           <input  type = "text" 
           placeholder = "Search by user name" 
           value = {this.state.search}
           onChange = {this.updatedSearch.bind(this)}
         />
+          </div>
+         </div>
         <ol>
-            {filterednames.map(name => (
-            <li key={name}>{name}</li>
+            {filteredPersons.map(person => (
+            <li key={person.id}><span class = "names">{person.name} </span> <span className = "username"> @{person.username} </span> </li>
             ))}
         </ol>
         </div>
