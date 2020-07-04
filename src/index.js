@@ -8,7 +8,7 @@ import Data from './Data';
    constructor() {
     super() 
       this.state = {
-        names : [],
+        persons  : []
       }
    }
 
@@ -19,11 +19,7 @@ import Data from './Data';
         .then(response => response.json())
         .then(output => {
         let data = output;
-        let listaimion = [];
-        for (let index = 0; index < data.length; index++) {
-          listaimion.push(data[index].name)
-        }      
-        this.setState({names : listaimion});
+        this.setState({persons : data})
       });
     }
 
@@ -31,7 +27,7 @@ import Data from './Data';
      render () {
        return (
          <div className = "Data">
-          <Data  names = {this.state.names} /> 
+          <Data  persons = {this.state.persons} /> 
          </div>       
        )
      }
